@@ -1,14 +1,9 @@
 <template>
   <div class="container">
     <main class="main">
-      <h2 class="title">記事一覧</h2>
-      <ul>
-        <li v-for="content in contents" :key="content.id">
-          <nuxt-link :to="`/${content.id}`">
-            {{ content.title }}
-          </nuxt-link>
-        </li>
-      </ul>
+      <h1 class="title">{{ title }}</h1>
+      <p class="publishedAt">{{ publishedAt }}</p>
+      <div class="post" v-html="body"></div>
     </main>
   </div>
 </template>
@@ -17,9 +12,9 @@
 import axios from 'axios'
 
 export default {
-  async asyncData({ $config }) {
+  async asyncData({ params, $config }) {
     const { data } = await axios.get(
-      `https://pjs-profile.microcms.io/api/v1/blog`,
+      `https://pjs-profile.microcms.io/api/v1/blog/${params.slug}`,
       {
         headers: { 'X-API-KEY': $config.apiKey }
       }
