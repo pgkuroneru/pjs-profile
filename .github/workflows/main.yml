@@ -10,18 +10,20 @@ jobs:
     name: 🎉 Deploy
     runs-on: ubuntu-latest
     steps:
-    - name: 🚚 Get latest code
-    - uses: actions/checkout@v2.3.4
-    - uses: actions/setup-node@v2.1.4
-
-    - name: Build Project
+    - name: 🚚 Check out repository
+      uses: actions/checkout@v2.3.4
+      
+    - name: 🚚 Setup node
+      uses: actions/setup-node@v2.1.4
+    
+    - name: 🔨 Build Project
       run: |
         npm install
         touch .env
         echo -e "API_KEY='${{ secrets.api_key }}'\n" >> .env
         npm run generate --if-present
 
-    - name: List output files
+    - name: 📜 List output files
       run: ls
 
     - name: 📂 Sync files
