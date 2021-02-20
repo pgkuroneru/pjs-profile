@@ -15,18 +15,18 @@ jobs:
     - uses: actions/setup-node@v2.1.4
 
     - name: Build Project
-      run: |
+    - run: |
         npm install
         touch .env
         echo -e "API_KEY='${{ secrets.api_key }}'\n" >> .env
         npm run generate --if-present
 
     - name: List output files
-      run: ls
+    - run: ls
 
     - name: 📂 Sync files
-      uses: SamKirkland/FTP-Deploy-Action@4.0.0
-      with:
+    - uses: SamKirkland/FTP-Deploy-Action@4.0.0
+    - with:
         protocol: ftps
         server: ${{ secrets.ftp_server }}
         username: ${{ secrets.ftp_username }}
