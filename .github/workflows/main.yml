@@ -8,32 +8,36 @@ on:
     types: [ blog_post ]
 
 jobs:
+  cleanup-runs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: rokroskar/workflow-run-cleanup-action@v0.3.0
+        env:
+          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+    if: "!startsWith(github.ref, 'refs/tags/')"
+
   web-deploy:
     name: 🎉 Deploy
     runs-on: ubuntu-latest
     steps:
-    - name: 🚚 Check out repository
-      uses: actions/checkout@v2.3.4
-      
-    - name: 🚚 Setup node
-      uses: actions/setup-node@v2.1.4
-    
-    - name: 🔨 Build Project
-      run: |
-        npm install
-        touch .env
-        echo -e "API_KEY='${{ secrets.api_key }}'\n" >> .env
-        npm run generate --if-present
+      - name: 🚚 Check out repository
+        uses: actions/checkout@v2.3.4
 
-    - name: 📂 Sync files
-      uses: SamKirkland/FTP-Deploy-Action@4.0.0
-      with:
-        protocol: ftps
-        server: ${{ secrets.ftp_server }}
-        username: ${{ secrets.ftp_username }}
-        password: ${{ secrets.ftp_password }}
-        local-dir: ./dist/
-        server-dir: ${{ secrets.ftp_server_dir }}
-        exclude: .git*
-          - README.md
-        log-level: minimal
+      - name: 🚚 Setup node
+        uses: actions/setup-node@v2.1.4
+
+      - name: 🔨 Build Project
+        run: |
+          npm install
+          touch .env
+          echo -e "API_KEY='${{ secrets.api_key }}'\n" >> .env
+          npm run generate --if-present
+          which lftp || sudo apt-get update -y && sudo apt-get install lftp -y
+
+      - name: 📂 Run ftp_upload
+        run: |
+          HOST="${{ secrets.FTP_SERVER }}" \
+          USER="${{ secrets.FTP_USERNAME }}" \
+          PASS="${{ secrets.FTP_PASSWORD }}" \
+          LOCAL_DIR="./dist/" \
+          REMOTE_DIR="${{ secrets.ftp_server_dir }}" ./.github/ftp_upload
