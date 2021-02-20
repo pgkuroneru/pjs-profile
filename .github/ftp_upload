@@ -2,6 +2,11 @@
 
 lftp -d -u $USER,$PASS $HOST -e "\
   set ssl:check-hostname false; \
+  set net:timeout 60; \
+  set net:max-retries 10; \
+  set net:reconnect-interval-base 10; \
+  set dns:max-retries 10; \; \
+  set dns:fatal-timeout 60; \
   mirror \
   --reverse \
   --delete \
