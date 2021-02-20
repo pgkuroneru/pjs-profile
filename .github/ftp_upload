@@ -1,7 +1,7 @@
 #!/bin/bash -eu
 
 lftp -d -u $USER,$PASS $HOST -e "\
-  set ftp:ssl-allow no; \
+  set ssl:check-hostname false; \
   mirror \
   --reverse \
   --delete \
