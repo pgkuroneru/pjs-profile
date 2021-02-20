@@ -23,9 +23,6 @@ jobs:
         echo -e "API_KEY='${{ secrets.api_key }}'\n" >> .env
         npm run generate --if-present
 
-    - name: 📜 List output files
-      run: ls
-
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@4.0.0
       with:
@@ -37,3 +34,4 @@ jobs:
         server-dir: ${{ secrets.ftp_server_dir }}
         exclude: .git*
           - README.md
+        log-level: minimal
