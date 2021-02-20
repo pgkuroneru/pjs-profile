@@ -1,6 +1,6 @@
 #!/bin/bash -eu
 
-lftp -d -u $USER,$PASS $HOST -e "\
+lftp -u $USER,$PASS $HOST -e "\
   set ssl:check-hostname false; \
   set net:timeout 60; \
   set net:max-retries 10; \
