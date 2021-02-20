@@ -58,7 +58,7 @@ export default {
   generate: {
     async routes() {
       const pages = await axios
-        .get('https://pjs-profile.microcms.io/api/v1/blog/?limit=100', {
+        .get('https://playlog-for-pjsekai.microcms.io/api/v1/blog/?limit=100', {
           headers: { 'X-API-KEY': API_KEY }
         })
         .then((res) =>
