@@ -32,6 +32,7 @@ jobs:
           touch .env
           echo -e "API_KEY='${{ secrets.api_key }}'\n" >> .env
           npm run generate --if-present
+          chmod +x ./.github/ftp_upload
           which lftp || sudo apt-get update -y && sudo apt-get install lftp -y
 
       - name: 📂 Run ftp_upload
