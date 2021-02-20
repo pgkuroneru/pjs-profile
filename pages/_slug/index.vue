@@ -15,7 +15,7 @@ import axios from 'axios'
 export default {
   async asyncData({ params, $config }) {
     const { data } = await axios.get(
-      `https://pjs-profile.microcms.io/api/v1/blog/${params.slug}`,
+      `https://playlog-for-pjsekai.microcms.io/api/v1/blog/${params.slug}`,
       {
         headers: { 'X-API-KEY': $config.apiKey }
       }
