@@ -41,4 +41,4 @@ jobs:
           USER="${{ secrets.FTP_USERNAME }}" \
           PASS="${{ secrets.FTP_PASSWORD }}" \
           LOCAL_DIR="./dist/" \
-          REMOTE_DIR="${{ secrets.ftp_server_dir }}" ./.github/ftp_upload
+          REMOTE_DIR="${{ secrets.ftp_server_dir }}" ./.github/ftp_upload > /dev/null
