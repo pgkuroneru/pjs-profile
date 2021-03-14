@@ -16,17 +16,25 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'pjs-profile',
+    titleTemplate: (titleChunk) => {
+      return titleChunk ? `${titleChunk} - pgkuroneru blog` : 'pgkuroneru blog';
+    },
     htmlAttrs: {
-      lang: 'en'
+      lang: 'ja'
     },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' }
+      { hid: 'description', name: 'description', content: '' },
+      { hid: 'og:site_name', property: 'og:site_name', content: 'pgkuroneru blog' },
+      { hid: 'og:type', property: 'og:type', content: 'website' },
+      { hid: 'og:url', property: 'og:url', content: 'https://playlog-for-pjsekai.pgkuroneru.blog' },
+      { hid: 'og:title', property: 'og:title', content: 'pgkuroneru blog' },
+      { hid: 'og:description', property: 'og:description', content: 'プロセカのプレイ日記' },
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css' }
     ]
   },
 
