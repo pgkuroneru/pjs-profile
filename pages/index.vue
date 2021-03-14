@@ -27,7 +27,7 @@ export default {
   head() {
     return {
       title: '',
-      titleTemplate: 'pgkuroneru blog'
+      titleTemplate: 'pgkuroneru pjsekai blog'
     }
   },
 

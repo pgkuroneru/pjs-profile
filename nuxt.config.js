@@ -17,7 +17,7 @@ export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     titleTemplate: (titleChunk) => {
-      return titleChunk ? `${titleChunk} - pgkuroneru blog` : 'pgkuroneru blog';
+      return titleChunk ? `${titleChunk} - pgkuroneru's pjsekai playlog` : 'pgkuroneru\'s pjsekai playlog';
     },
     htmlAttrs: {
       lang: 'ja'
@@ -26,11 +26,15 @@ export default {
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
-      { hid: 'og:site_name', property: 'og:site_name', content: 'pgkuroneru blog' },
+      { hid: 'og:site_name', property: 'og:site_name', content: 'pgkuroneru\'s pjsekai playlog' },
       { hid: 'og:type', property: 'og:type', content: 'website' },
       { hid: 'og:url', property: 'og:url', content: 'https://playlog-for-pjsekai.pgkuroneru.blog' },
       { hid: 'og:title', property: 'og:title', content: 'pgkuroneru blog' },
-      { hid: 'og:description', property: 'og:description', content: 'プロセカのプレイ日記' },
+      { hid: 'og:description', property: 'og:description', content: 'PGクロネルのプロセカプレイ日記' },
+      { hid: 'og:image', property: 'og:image', content: '' },
+      { hid: 'twitter:card', property: 'twitter:card', content: 'summary_large_image' },
+      { hid: 'twitter:site', property: 'twitter:site', content: '@pgkuroneru' },
+      { hid: 'twitter:creator', property: 'twitter:creator', content: '@pgkuroneru' },
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
