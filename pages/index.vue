@@ -2,7 +2,7 @@
   <main class="main">
     <h2 class="title">記事一覧</h2>
     <div class="articles row mt-3">
-      <div class="col-md-4" v-for="content in contents" :key="content.id">
+      <div class="col-md-4 d-flex" v-for="content in contents" :key="content.id">
         <div class="card mb-2">
           <nuxt-link :to="`/${content.id}`" class="card-link">
             <img :src="`${content.ogpImage.url}`" class="card-img-top img-fluid" alt="...">
@@ -44,4 +44,11 @@ export default {
 </script>
 
 <style>
+.card {
+  display: flex;
+}
+
+.card-body {
+  margin-top: auto;
+}
 </style>
