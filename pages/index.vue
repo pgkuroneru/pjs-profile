@@ -11,7 +11,7 @@
               <p class="card-subtitle mb-2 text-muted">
                 カテゴリ－：{{ content.category.name }}
               </p>
-              <p class="card-subtitle mb-2 text-muted">投稿日：{{ new Date(content.publishedAt).toLocaleDateString('ja-JP', {timeZone: 'Asia/Tokyo'}) }}</p>
+              <p class="card-subtitle mb-2 text-muted">投稿日：{{ new Date(content.updatedAt).toLocaleDateString('ja-JP', {timeZone: 'Asia/Tokyo'}) }}</p>
             </div>
           </nuxt-link>
         </div>
