@@ -44,4 +44,8 @@ export default {
 </script>
 
 <style>
+main .post img {
+  width: 100%;
+  margin-bottom: 1.0em;
+}
 </style>
